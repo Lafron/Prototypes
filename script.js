@@ -48,8 +48,6 @@ function DomElement(selector, height, width, bg, fontSize) {
     };
 }
 
-const h1 = document.querySelector("h1");
-
 const newElement = new DomElement(".block", "200px", "400px", "blue", "21px");
 const loadElem = newElement.createEl();
 document.body.append(loadElem);
