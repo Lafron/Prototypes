@@ -48,8 +48,6 @@ function DomElement(selector, height, width, bg, fontSize) {
     };
 }
 
-const h1 = document.querySelector("h1");
-
 const newElement = new DomElement(".block", "200px", "400px", "blue", "21px");
 const loadElem = newElement.createEl();
 document.body.append(loadElem);
@@ -66,28 +64,35 @@ squareLoad.style.top = "400px";
 squareLoad.style.left = "400px";
 squareLoad.textContent = "Moving square";
 
-squareLoad.moveFunc = function(event) {
+squareLoad.moveFunc = event => {
     let key = event.key;
-    if(key == "ArrowUp"){
-        let top = parseInt(squareLoad.style.top) - 10;
-        squareLoad.style.top = top + "px";
-    }
-    else if(key == "ArrowRight"){
-        let left = parseInt(squareLoad.style.left) + 10;
-        squareLoad.style.left = left +"px";
-    }
-    else if(key == "ArrowDown"){
-        let top = parseInt(squareLoad.style.top) + 10;
-        squareLoad.style.top = top +"px";
-    }
-    else if(key == "ArrowLeft"){
-        let left = parseInt(squareLoad.style.left) - 10;
-        squareLoad.style.left = left +"px";
+    let top;
+    let left;
+
+    switch(key){
+        case "ArrowUp":{
+            top = parseInt(squareLoad.style.top) - 10;
+            squareLoad.style.top = top + "px";
+        }
+        break;
+        case "ArrowRight":{
+            left = parseInt(squareLoad.style.left) + 10;
+            squareLoad.style.left = left +"px";
+        }
+        break;
+        case "ArrowDown":{
+            top = parseInt(squareLoad.style.top) + 10;
+            squareLoad.style.top = top +"px";
+        }
+        break;
+        case "ArrowLeft":{
+            left = parseInt(squareLoad.style.left) - 10;
+            squareLoad.style.left = left +"px";
+        }
+        break;
     }
 };
 
 document.addEventListener("keydown", squareLoad.moveFunc);
 
 document.addEventListener("DOMContentLoaded", () => document.body.append(squareLoad));
-
-
