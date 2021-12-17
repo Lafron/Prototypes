@@ -1,5 +1,5 @@
 
-function DomElement(selector, height, width, bg, fontSize) {
+function DomElement(selector, width, height, bg, fontSize) {
         
     this.selector = selector;
 
@@ -48,20 +48,23 @@ function DomElement(selector, height, width, bg, fontSize) {
     };
 }
 
-const newElement = new DomElement(".block", "200px", "400px", "blue", "21px");
+const newElement = new DomElement(".block", "400px", "200px", "blue", "21px");
 const loadElem = newElement.createEl();
 document.body.append(loadElem);
 
-const newParagraph = new DomElement("#best", "100px", "200px", "green", "21px");
+const newParagraph = new DomElement("#best", "200px", "100px", "green", "21px");
 const loadPar = newParagraph.createEl();
 document.body.append(loadPar);
 
-const Kvadrat = new DomElement(".kvadrat", "200px", "200px", "aqua", "24px");
-const squareLoad = Kvadrat.createEl();
+const square = new DomElement(".square", "200px", "114px", "aqua", "24px");
+const squareLoad = square.createEl();
+
 
 squareLoad.style.position = "absolute";
 squareLoad.style.top = "400px";
 squareLoad.style.left = "400px";
+squareLoad.style.textAlign = "center";
+squareLoad.style.paddingTop = "80px";
 squareLoad.textContent = "Moving square";
 
 squareLoad.moveFunc = event => {
@@ -72,6 +75,9 @@ squareLoad.moveFunc = event => {
     switch(key){
         case "ArrowUp":{
             top = parseInt(squareLoad.style.top) - 10;
+            if(top < 0){
+                top = 0;
+            }
             squareLoad.style.top = top + "px";
         }
         break;
@@ -87,6 +93,9 @@ squareLoad.moveFunc = event => {
         break;
         case "ArrowLeft":{
             left = parseInt(squareLoad.style.left) - 10;
+            if(left < 0){
+                left = 0;
+            }
             squareLoad.style.left = left +"px";
         }
         break;
