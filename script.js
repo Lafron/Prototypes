@@ -64,7 +64,7 @@ squareLoad.style.top = "400px";
 squareLoad.style.left = "400px";
 squareLoad.textContent = "Moving square";
 
-squareLoad.moveFunc = function(event) {
+squareLoad.moveFunc = event => {
     let key = event.key;
     let top;
     let left;
